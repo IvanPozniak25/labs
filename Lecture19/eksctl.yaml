@@ -1,0 +1,21 @@
+# eksctl.yaml
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: lab-eks-2
+  region: us-east-2
+
+managedNodeGroups:
+  - name: ng-a
+    instanceType: t3.medium
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 2
+    privateNetworking: false
+  - name: ng-b
+    instanceType: t3.medium
+    desiredCapacity: 1
+    minSize: 1
+    maxSize: 2
+    privateNetworking: false
