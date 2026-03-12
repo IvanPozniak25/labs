@@ -1,0 +1,12 @@
+#SPDX-License-Identifier: MIT-0
+---
+# defaults file for baseline_role
+baseline_packages:
+  - vim
+  - git
+  - mc
+  - firewalld
+
+baseline_users:
+  - name: ec2-user
+    authorized_keys: []

@@ -1,0 +1,5 @@
+- name: Firewall for web hosts
+  hosts: tag_Project_AdvancedAnsible
+  become: true
+  roles:
+    - firewall_role

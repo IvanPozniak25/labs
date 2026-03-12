@@ -1,0 +1,6 @@
+- name: Baseline for all hosts
+  hosts: tag_Project_AdvancedAnsible
+  become: true
+
+  roles:
+    - baseline_role

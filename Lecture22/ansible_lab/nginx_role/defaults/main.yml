@@ -1,0 +1,8 @@
+#SPDX-License-Identifier: MIT-0
+---
+# defaults file for nginx_role
+nginx_listen_port: 80
+nginx_server_name: "_"
+nginx_custom_directory: /var/www/web_domain
+nginx_root: /usr/share/nginx/html
+

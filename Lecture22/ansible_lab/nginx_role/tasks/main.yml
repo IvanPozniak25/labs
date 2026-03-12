@@ -1,0 +1,42 @@
+---
+- name: Install Nginx
+  become: true
+  package:
+    name: nginx
+    state: present
+
+- name: Ensure web root exists
+  become: true
+  file:
+    path: "{{ nginx_root }}"
+    state: directory
+    mode: "0755"
+
+- name: Ensure custom nginx directory exists
+  become: true
+  ansible.builtin.file:
+    path: "{{ nginx_custom_directory }}"
+    state: directory
+    mode: "0755"
+
+- name: Deploy nginx config
+  become: true
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/nginx.conf
+    mode: "0644"
+  notify: Reload nginx
+
+- name: Copy index.html to nginx dir
+  become: true
+  copy:
+    src: index.html
+    dest: "{{ nginx_root }}/index.html"
+    mode: "0644"
+
+- name: Ensure Nginx is running and enabled
+  become: true
+  service:
+    name: nginx
+    state: started
+    enabled: true

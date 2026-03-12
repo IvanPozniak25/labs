@@ -1,0 +1,30 @@
+- name: Install firewalld
+  become: true
+  package:
+    name: firewalld
+    state: present
+
+- name: Ensure firewalld is enabled and started
+  become: true
+  service:
+    name: firewalld
+    state: started
+    enabled: true
+
+- name: Allow required services
+  become: true
+  ansible.posix.firewalld:
+    service: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: true
+  loop: "{{ firewalld_allowed_services }}"
+
+- name: Allow required ports
+  become: true
+  ansible.posix.firewalld:
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+    immediate: true
+  loop: "{{ firewalld_allowed_ports }}"

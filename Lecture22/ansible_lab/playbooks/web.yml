@@ -1,0 +1,9 @@
+---
+- name: Main Infrastructure Playbook
+  hosts: tag_Project_AdvancedAnsible
+  become: true
+  roles:
+    - baseline_role
+    - firewall_role
+    - secrets
+    - nginx_role

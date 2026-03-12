@@ -1,0 +1,11 @@
+firewalld_allowed_services:
+  - ssh
+  - http
+  - https
+
+firewalld_allowed_ports: []
+
+firewalld_zone: public
+firewalld_permanent: true
+firewalld_immediate: true
+firewalld_state: enabled
